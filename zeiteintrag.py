@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import delete
 
 class Zeiteintrag:
     PAUSEN_GRENZE = 6  
@@ -29,6 +30,8 @@ class Zeiteintrag:
             "stunden": self.stunden,
             "gehalt": self.gehalt
         }
+        
+
 
 db = SQLAlchemy() # Initialisierung der Datenbank
 
@@ -39,3 +42,4 @@ class Eintrag(db.Model):
     ende = db.Column(db.String(5), nullable=False) # Endzeit des Eintrags
     stunden = db.Column(db.Float, nullable=False) # Gearbeitete Stunden
     gehalt = db.Column(db.Float, nullable=False) # Verdientes Gehalt
+    

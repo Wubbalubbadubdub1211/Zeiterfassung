@@ -48,5 +48,12 @@ def index(): # Route für die Startseite
                            gesamt_stunden=gesamt_stunden,
                            gesamt_gehalt=gesamt_gehalt)
 
+@app.route("/delete/<int:id>", methods=["POST"])
+def delete(id):
+    eintrag = Eintrag.query.get_or_404(id)  # Holt den Eintrag oder gibt 404 zurück, falls nicht gefunden
+    db.session.delete(eintrag)              # Markiert den Eintrag zur Löschung
+    db.session.commit()                     # Führt die Löschung in der Datenbank durch
+    return redirect("/")                    # Leitet zurück auf die Startseite
+
 if __name__ == "__main__":
     app.run(debug=True)

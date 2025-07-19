@@ -35,6 +35,7 @@
             <th>Endzeit</th>
             <th>Stunden</th>
             <th>Gehalt (€)</th>
+            <th>Aktionen</th>
         </tr>
         {% for e in eintraege %} <!-- Schleife über die Einträge -->
         <tr>
@@ -43,6 +44,10 @@
             <td>{{ e.ende }}</td>
             <td>{{ e.stunden }}</td>
             <td>{{ e.gehalt }}</td>
+            <td>
+                <form method="POST" action="/delete/{{ e.id }}" onsubmit="return confirm('Eintrag wirklich löschen?');">
+                    <button type="submit" class="delete-button">Löschen</button>
+                </form>
         </tr>
         {% endfor %} <!-- Ende der Schleife -->
     </table>

@@ -56,6 +56,22 @@ input[type="submit"]:hover { /* Hover-Effekt für den Absende-Button */
     background-color: #45a049;
 }
 
+.delete-button {
+    padding: 8px 16px;
+    background-color: #c0392b; /* Rotes Design für Warnung */
+    border: none; 
+    color: white;
+    font-weight: bold; 
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #e74c3c; /* Hellroter Hover-Effekt */
+}
+
+
 table { /* Stil für die Tabelle */
     width: 90%;
     margin: 0 auto;
@@ -63,6 +79,14 @@ table { /* Stil für die Tabelle */
     background-color: #111;
     color: #ddd;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); 
+}
+
+table form {
+    background: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    display: inline;
 }
 
 th, td { /* Stil für Tabellenzellen */
@@ -78,3 +102,5 @@ th {
 td {
     background-color: #222;
 }
+
+
