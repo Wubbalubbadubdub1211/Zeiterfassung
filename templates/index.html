@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html lang="de"> <!-- Sprache deutsch -->
+<head> <!-- Infos über die Seite -->
+    <meta charset="UTF-8"> <!-- Zeichensatz -->
+    <title>Arbeitszeiterfassung</title> <!-- Titel der Seite -->
+    <link rel="stylesheet" href="/static/style.css"> <!-- Verlinkung zur CSS Datei -->
+</head>
+<body> <!-- Inhalt der Seite -->
+    <h1>Arbeitszeiterfassung</h1> <!-- Hauptüberschrift -->
+
+    <form method="post">
+        <div class="form-group"> <!-- Formulargruppe -->
+            <label for="datum">Datum:</label> <!-- Beschriftung für das Datum -->
+            <input type="date" id="datum" name="datum" required> <!-- Eingabefeld für Datum -->
+        </div>
+
+        <div class="form-group">
+            <label for="startzeit">Startzeit:</label>
+            <input type="time" id="startzeit" name="startzeit" required>
+        </div>
+
+        <div class="form-group">
+            <label for="endzeit">Endzeit:</label>
+            <input type="time" id="endzeit" name="endzeit" required>
+        </div>
+
+        <input type="submit" value="Eintrag speichern">
+    </form>
+
+    <h2>Deine Einträge</h2> <!-- Unterüberschrift -->
+    <table border="1"> <!-- Tabelle mit Rahmen -->
+        <tr> <!-- Tabellenkopf -->
+            <th>Datum</th> <!-- Spaltenüberschriften -->
+            <th>Startzeit</th>
+            <th>Endzeit</th>
+            <th>Stunden</th>
+            <th>Gehalt (€)</th>
+        </tr>
+        {% for e in eintraege %} <!-- Schleife über die Einträge -->
+        <tr>
+            <td>{{ e.datum }}</td> <!-- Eintrag für Datum -->
+            <td>{{ e.start }}</td>
+            <td>{{ e.ende }}</td>
+            <td>{{ e.stunden }}</td>
+            <td>{{ e.gehalt }}</td>
+        </tr>
+        {% endfor %} <!-- Ende der Schleife -->
+    </table>
+
+    <h3>Gesamtstunden: {{ gesamt_stunden }} h</h3> 
+    <h3>Gesamtgehalt: {{ gesamt_gehalt }} €</h3>
+</body>
+</html>
