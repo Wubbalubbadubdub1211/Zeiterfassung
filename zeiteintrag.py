@@ -3,8 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import delete
 
 class Zeiteintrag:
-    PAUSEN_GRENZE = 6  
-    PAUSE = 0.5        
+    PAUSEN_GRENZE1 = 6  
+    PAUSEN_GRENZE2 = 7
+    PAUSE1 = 0.5
+    Pause2 = 1.0        
 
     def __init__(self, datum, startzeit, endzeit, stundensatz=13.25):
         self.datum = datum
@@ -18,9 +20,13 @@ class Zeiteintrag:
         start = datetime.strptime(self.startzeit, "%H:%M")
         ende = datetime.strptime(self.endzeit, "%H:%M")
         stunden = (ende - start).seconds / 3600
-        if stunden > self.PAUSEN_GRENZE:
-            stunden -= self.PAUSE
-        return round(stunden, 2)
+        if stunden > self.PAUSEN_GRENZE1:
+            stunden -= self.PAUSE1
+            pausenzeit = self.PAUSE1
+        if stunden > self.PAUSEN_GRENZE2:
+            stunden -= self.Pause2
+            pausenzeit
+        return round(stunden, 2), pausenzeit
 
     def to_dict(self):
         return {

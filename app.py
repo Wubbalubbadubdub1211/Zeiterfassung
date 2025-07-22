@@ -32,6 +32,7 @@ def index(): # Route für die Startseite
             start=zeiteintrag.startzeit,
             ende=zeiteintrag.endzeit,
             stunden=zeiteintrag.stunden,
+            pausenzeit=zeiteintrag.pausenzeit,
             gehalt=zeiteintrag.gehalt
         )
         db.session.add(neuer_eintrag)
