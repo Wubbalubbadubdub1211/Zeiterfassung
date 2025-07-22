@@ -6,26 +6,28 @@ class Zeiteintrag:
     PAUSEN_GRENZE1 = 6  
     PAUSEN_GRENZE2 = 7
     PAUSE1 = 0.5
-    Pause2 = 1.0        
+    PAUSE2 = 1.0        
 
     def __init__(self, datum, startzeit, endzeit, stundensatz=13.25):
         self.datum = datum
         self.startzeit = startzeit
         self.endzeit = endzeit
         self.stundensatz = stundensatz
-        self.stunden = self._berechne_stunden()
+        self.stunden, self.pausenzeit = self._berechne_stunden()
         self.gehalt = round(self.stunden * self.stundensatz, 2)
 
     def _berechne_stunden(self):
         start = datetime.strptime(self.startzeit, "%H:%M")
         ende = datetime.strptime(self.endzeit, "%H:%M")
         stunden = (ende - start).seconds / 3600
-        if stunden > self.PAUSEN_GRENZE1:
+        pausenzeit = 0.0
+        
+        if stunden > self.PAUSEN_GRENZE2:
+            stunden -= self.PAUSE2
+            pausenzeit += self.PAUSE2
+        elif stunden > self.PAUSEN_GRENZE1:
             stunden -= self.PAUSE1
             pausenzeit = self.PAUSE1
-        if stunden > self.PAUSEN_GRENZE2:
-            stunden -= self.Pause2
-            pausenzeit
         return round(stunden, 2), pausenzeit
 
     def to_dict(self):
@@ -34,6 +36,7 @@ class Zeiteintrag:
             "start": self.startzeit,
             "ende": self.endzeit,
             "stunden": self.stunden,
+            "pausenzeit": self.pausenzeit,
             "gehalt": self.gehalt
         }
         
@@ -47,5 +50,8 @@ class Eintrag(db.Model):
     start = db.Column(db.String(5), nullable=False) # Startzeit des Eintrags
     ende = db.Column(db.String(5), nullable=False) # Endzeit des Eintrags
     stunden = db.Column(db.Float, nullable=False) # Gearbeitete Stunden
+    pausenzeit = db.Column(db.Float, nullable=False)
     gehalt = db.Column(db.Float, nullable=False) # Verdientes Gehalt
+    
+
     
