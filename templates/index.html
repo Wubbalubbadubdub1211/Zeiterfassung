@@ -1,10 +1,12 @@
 <!DOCTYPE html> 
 <html lang="de"> <!-- Sprache deutsch -->
+
 <head> <!-- Infos über die Seite -->
     <meta charset="UTF-8"> <!-- Zeichensatz -->
     <title>Arbeitszeiterfassung</title> <!-- Titel der Seite -->
     <link rel="stylesheet" href="/static/style.css"> <!-- Verlinkung zur CSS Datei -->
 </head>
+
 <body> <!-- Inhalt der Seite -->
     <h1>Arbeitszeiterfassung</h1> <!-- Hauptüberschrift -->
 
@@ -28,6 +30,33 @@
     </form>
 
     <h2>Deine Einträge</h2> <!-- Unterüberschrift -->
+
+    <div class="monatsauswahl-wrapper">
+    <form method="get" style="display: inline-block;">
+        <label for="monat">Monat:</label>
+        <select id="monat" name="monat">
+            <option value="1">Januar</option>
+            <option value="2">Februar</option>
+            <option value="3">März</option>
+            <option value="4">April</option>
+            <option value="5">Mai</option>
+            <option value="6">Juni</option>
+            <option value="7">Juli</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">Oktober</option>
+            <option value="11">November</option>
+            <option value="12">Dezember</option>
+        </select>
+        <input type="submit" value="Monat anzeigen">
+    </form>
+    </div>
+
+    {% if gewaehlter_monat %}
+    <h3>Ausgewählter Monat: {{ gewaehlter_monat }}</h3>
+    {% endif %}
+
+
     <table border="1"> <!-- Tabelle mit Rahmen -->
         <tr> <!-- Tabellenkopf -->
             <th>Datum</th> <!-- Spaltenüberschriften -->

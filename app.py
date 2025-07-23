@@ -40,14 +40,30 @@ def index(): # Route für die Startseite
 
         return redirect("/")  # Zurück zur Startseite
 
+    monat = request.args.get("monat")  # Monat aus den URL-Parametern holen 
+    if monat:
+        # Wenn ein Monat angegeben ist, nur Einträge für diesen Monat anzeigen
+        monat = monat.zfill(2)  # Monat auf 2 Stellen auffüllen
+        eintraege = Eintrag.query.filter(Eintrag.datum.like(f"%-{monat}-%")).order_by(Eintrag.datum.desc()).all()
+    else:
+        # Ansonsten alle Einträge anzeigen
+        eintraege = Eintrag.query.order_by(Eintrag.datum.desc()).all()
+
     # Summen berechnen
-    eintraege = Eintrag.query.all()
     gesamt_stunden = sum(e.stunden for e in eintraege)
     gesamt_gehalt = round(sum(e.gehalt for e in eintraege), 2)
+    
+    monat_name = {
+    "01": "Januar", "02": "Februar", "03": "März", "04": "April",
+    "05": "Mai", "06": "Juni", "07": "Juli", "08": "August",
+    "09": "September", "10": "Oktober", "11": "November", "12": "Dezember"
+}.get(monat, "") if monat else ""
 
-    return render_template("index.html", eintraege=eintraege, # render_template: HTML-Seite rendern variable in html=Eingabe 
-                           gesamt_stunden=gesamt_stunden,
-                           gesamt_gehalt=gesamt_gehalt)
+    return render_template("index.html", eintraege=eintraege,
+                       gesamt_stunden=gesamt_stunden,
+                       gesamt_gehalt=gesamt_gehalt,
+                       gewaehlter_monat=monat_name)
+
 
 @app.route("/delete/<int:id>", methods=["POST"])
 def delete(id):

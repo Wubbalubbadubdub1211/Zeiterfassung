@@ -59,7 +59,7 @@ input[type="submit"]:hover { /* Hover-Effekt für den Absende-Button */
 .delete-button {
     padding: 8px 16px;
     background-color: #c0392b; /* Rotes Design für Warnung */
-    border: none; 
+    border: none; /* Kein Rahmen */
     color: white;
     font-weight: bold; 
     border-radius: 4px;
@@ -87,6 +87,36 @@ table form {
     margin: 0;
     box-shadow: none;
     display: inline;
+}
+
+.monatsauswahl-wrapper {
+    max-width: 90%;
+    margin: 0 auto 20px auto; 
+    text-align: left;
+}
+
+.monatsauswahl-wrapper form {
+    background: none;
+    box-shadow: none; 
+    padding: 0; 
+    display: inline-block;
+}
+
+.monatsauswahl-wrapper select,
+.monatsauswahl-wrapper input[type="submit"] {
+    background-color: #fff;
+    color: #000;
+    padding: 6px 12px; 
+    font-size: 14px;
+    border-radius: 0;
+    box-shadow: none;
+    margin-right: 10px;
+    outline: none; 
+}
+
+.monatsauswahl-wrapper input[type="submit"] {
+    cursor: pointer; /* Zeigt an, dass der Button klickbar ist */
+    font-weight: bold;
 }
 
 th, td { /* Stil für Tabellenzellen */

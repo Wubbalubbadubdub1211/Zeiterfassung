@@ -22,7 +22,7 @@ class Zeiteintrag:
         stunden = (ende - start).seconds / 3600
         pausenzeit = 0.0
         
-        if stunden > self.PAUSEN_GRENZE2:
+        if stunden >= self.PAUSEN_GRENZE2:
             stunden -= self.PAUSE2
             pausenzeit += self.PAUSE2
         elif stunden > self.PAUSEN_GRENZE1:
