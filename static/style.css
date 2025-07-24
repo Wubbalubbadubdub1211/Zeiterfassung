@@ -1,84 +1,136 @@
-body {
-    font-family: Arial, sans-serif; /* Schriftart für den gesamten Text */
-    background-color: #060505; /* Hintergrundfarbe */
-    color: #ccc; /* Textfarbe */
-    margin: 40px; /* Abstand um den gesamten Inhalt */
+/* ========== Allgemeine Seiteneinstellungen ========== */
+body {                                    /* Allgemeine Einstellungen für den Body */
+    font-family: Arial, sans-serif;       /* Schriftart für die ganze Seite */
+    background-color: #060505;          /* Hintergrund */
+    color: #ccc;                        /* Schriftfarbe */
+    margin: 0;
+    padding: 0;
+    background-image: url("/static/bilder/Startseite_Hintergrund.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-h1, h2, h3 { /* Überschriften-Stile */
-    color: #fefafa;
+h1, h2, h3 {                              /* Überschriften */ 
+    color: #fefafa;                      
+    text-align: center;                   /* Alle Überschriften zentriert */
+}
+
+/* ========== Startseite Überschrift ========== */
+.startseite_container {
+    height: 80vh;                         /* Nimmt die ganze Höhe des Bildschirms ein */
+    width: 100vw;  
+    display: flex;                        /* Flexbox für zentrierte Anordnung */
+    justify-content: center;              /* Zentriert horizontal */
+    align-items: center;                  /* Zentriert vertikal */
+}
+
+.startseite {
+    font-size: 100px;                     /* Schriftgröße für die Startseite */
+}
+
+/* ========== Header-Design ========== */
+header {
+    background-color: transparent; /* Transparenter Header */
+    padding: 10px 0; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.navbar {
+    max-width: 10000px;
+    margin-top: 40px ; /* Abstand zum oberen Rand */
     text-align: center;
 }
 
-form { /* Stil für das Formular */
-    background-color: #111; /* Formularhintergrund */
-    padding: 20px; /* Innenabstand des Formulars */
-    border-radius: 8px; /* Abgerundete Ecken */
-    max-width: 500px; /* Maximale Breite des Formulars */
-    margin: 0 auto 30px auto; /* Zentriert das Formular und gibt ihm einen unteren Abstand */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Schatteneffekt für das Formular */
-}
-
-.form-group { /* Stil für die Formularfelder */
-    display: flex; /* Flexbox für die Anordnung der Elemente */
-    align-items: center; /* Zentriert die Elemente vertikal */
-    margin-bottom: 15px; /* Abstand zwischen den Formularfeldern */
-}
-
-.form-group label { /* Stil für die Beschriftungen der Formularfelder */
-    width: 120px; /* Feste Breite für die Beschriftungen */
-    font-weight: bold; /* Fettdruck für die Beschriftungen */
-    color: #eee; 
-}
-
-.form-group input { /* Stil für die Eingabefelder */
-    flex: 1; /* Nimmt den verbleibenden Platz ein */
-    padding: 8px; 
-    background-color: #222; 
+.navbar a {
     color: #fff;
-    border: 1px solid #555;
-    border-radius: 4px;
+    text-decoration: none; /* Keine Unterstreichung */
+    margin: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 16px; 
+    border-radius: 6px;
+    transition: background-color 0.3s;
 }
 
-input[type="submit"] { /* Stil für den Absende-Button */
-    width: 100%;
-    padding: 10px;
+.navbar a:hover {
     background-color: #4CAF50;
+    color: #fff;
+}
+
+/* ========== Formular-Design ========== */
+form {
+    background-color: #111;               
+    padding: 20px;                        /* Innenabstand (Platz rundherum) */
+    border-radius: 8px;                   /* Abgerundete Ecken */
+    max-width: 500px;                     /* Maximalbreite des Formulars, zentriert */
+    margin: 0 auto 30px auto;             /* Zentriert + Abstand unten */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Leichter Schatten */
+}
+
+/* ========== Eingabefelder im Formular ========== */
+.form-group {
+    display: flex;                       /* Felder und Beschriftungen nebeneinander */
+    align-items: center;                 /* Vertikal ausrichten */
+    margin-bottom: 15px;                 /* Abstand zwischen den Gruppen */
+}
+
+.form-group label {
+    width: 120px;                         /* Feste Breite der Beschriftung */
+    font-weight: bold;                    /* Fett gedruckt */
+    color: #eee;                        /
+}
+
+.form-group input {
+    flex: 1;                              /* Nimmt den restlichen Platz ein */
+    padding: 8px;
+    background-color: #222;              
+    color: #fff;
+    border: 1px solid #555;            /* Rahmen */
+    border-radius: 4px;                  /* Leicht abgerundet */
+}
+
+/* ========== Speichern-Button ========== */
+input[type="submit"] {
+    width: 100%;                          /* Ganze Breite */
+    padding: 10px;
+    background-color: #4CAF50;          
     border: none;
     color: white;
     font-weight: bold;
     border-radius: 4px;
-    cursor: pointer; /* Zeigt an, dass der Button klickbar ist */
-    transition: background-color 0.3s; /* Übergangseffekt für die Hintergrundfarbe */
+    cursor: pointer;                     /* Maus wird zur Hand */
+    transition: background-color 0.3s;   /* Sanfter Farbübergang beim Hover */
 }
 
-input[type="submit"]:hover { /* Hover-Effekt für den Absende-Button */
-    background-color: #45a049;
+input[type="submit"]:hover {
+    background-color: #45a049;           /* Dunkleres Grün beim Darüberfahren */
 }
 
+/* ========== Löschen-Button ========== */
 .delete-button {
     padding: 8px 16px;
-    background-color: #c0392b; /* Rotes Design für Warnung */
-    border: none; /* Kein Rahmen */
+    background-color: #c0392b;           /* Rotes Warnsignal */
+    border: none;
     color: white;
-    font-weight: bold; 
+    font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .delete-button:hover {
-    background-color: #e74c3c; /* Hellroter Hover-Effekt */
+    background-color: #e74c3c;           /* Helleres Rot beim Hover */
 }
 
-
-table { /* Stil für die Tabelle */
+/* ========== Tabelle mit Einträgen ========== */
+table {
     width: 90%;
     margin: 0 auto;
-    border-collapse: collapse; /* Entfernt Abstände zwischen den Zellen */
-    background-color: #111;
-    color: #ddd;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); 
+    border-collapse: collapse;             /* Entfernt Lücken zwischen Zellen */
+    background-color: #111;              
+    color: #ddd;                         
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
 table form {
@@ -86,51 +138,53 @@ table form {
     padding: 0;
     margin: 0;
     box-shadow: none;
-    display: inline;
+    display: inline;                
 }
 
-.monatsauswahl-wrapper {
-    max-width: 90%;
-    margin: 0 auto 20px auto; 
-    text-align: left;
-}
-
-.monatsauswahl-wrapper form {
-    background: none;
-    box-shadow: none; 
-    padding: 0; 
-    display: inline-block;
-}
-
-.monatsauswahl-wrapper select,
-.monatsauswahl-wrapper input[type="submit"] {
-    background-color: #fff;
-    color: #000;
-    padding: 6px 12px; 
-    font-size: 14px;
-    border-radius: 0;
-    box-shadow: none;
-    margin-right: 10px;
-    outline: none; 
-}
-
-.monatsauswahl-wrapper input[type="submit"] {
-    cursor: pointer; /* Zeigt an, dass der Button klickbar ist */
-    font-weight: bold;
-}
-
-th, td { /* Stil für Tabellenzellen */
+/* ========== Tabellenzellen ========== */
+th, td {
     padding: 12px;
     border: 1px solid #444;
     text-align: center;
 }
 
 th {
-    background-color: #333;
+    background-color: #333;             
 }
 
 td {
-    background-color: #222;
+    background-color: #222;              
 }
 
+
+/* ========== Monatsauswahl über der Tabelle ========== */
+.monatsauswahl-wrapper {
+    max-width: 90%;
+    margin: 0 auto 20px auto;
+    text-align: left;
+}
+
+.monatsauswahl-wrapper form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    display: inline-block;
+}
+
+.monatsauswahl-wrapper select,
+.monatsauswahl-wrapper input[type="submit"] {
+    background-color: #fff;              
+    color: #000;                         
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 0;
+    box-shadow: none;
+    margin-right: 10px;
+    outline: none;
+}
+
+.monatsauswahl-wrapper input[type="submit"] {
+    cursor: pointer;
+    font-weight: bold;
+}
 
